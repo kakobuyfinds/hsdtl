@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="index, follow">
+  <title>PikoBuy Spreadsheet | CAFANS Finds &amp; USD Prices</title>
+  <meta name="description" content="Browse the PikoBuy spreadsheet with real CAFANS listings, estimated USD prices, category filters, and a checklist for sizing, QC photos, and shipping.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PikoBuy Spreadsheet | CAFANS Finds &amp; USD Prices">
+  <meta property="og:description" content="Compare CAFANS shoes, streetwear, and jackets by category and estimated USD price.">
+  <!-- Google and Bing submission pending. Publish index.html, verify its URL in Google Search Console and Bing Webmaster Tools, then request indexing for that URL in each service. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "PikoBuy Spreadsheet",
+    "description": "An independent browsing guide with a selection of CAFANS product listings and estimated USD prices.",
+    "inLanguage": "en",
+    "mainEntity": {
+      "@type": "ItemList",
+      "name": "CAFANS product selection",
+      "numberOfItems": 6,
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Leather Slides","url":"https://cafans.com/goods-158791.html"},
+        {"@type":"ListItem","position":2,"name":"Platform Slides","url":"https://cafans.com/goods-158790.html"},
+        {"@type":"ListItem","position":3,"name":"Sweatshirt","url":"https://cafans.com/goods-158792.html"},
+        {"@type":"ListItem","position":4,"name":"Unisex Embroidered Oversized T-Shirt","url":"https://cafans.com/goods-158200.html"},
+        {"@type":"ListItem","position":5,"name":"Unisex T-Shirt","url":"https://cafans.com/goods-158110.html"},
+        {"@type":"ListItem","position":6,"name":"Corteiz Jacket","url":"https://cafans.com/goods-158279.html"}
+      ]
+    }
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f6ef;
+      --ink: #162c23;
+      --muted: #4b6157;
+      --forest: #102e23;
+      --green: #245c44;
+      --lime: #d8f59b;
+      --line: #d6ded4;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 1rem/1.6 system-ui, sans-serif;
+    }
+    [hidden] { display: none !important; }
+    a { color: var(--green); text-underline-offset: .23em; }
+    a:hover { text-decoration-thickness: .14em; }
+    :focus-visible { outline: 3px solid #9a5210; outline-offset: 4px; }
+    .shell { width: min(70rem, calc(100% - 2rem)); margin-inline: auto; }
+    .topbar {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding-block: 1rem;
+    }
+    .wordmark { font-weight: 850; letter-spacing: .1em; }
+    nav { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+    .hero {
+      background: linear-gradient(130deg, #102e23, #204b39);
+      color: white;
+      border-radius: 1.5rem;
+      padding: clamp(2.5rem, 8vw, 6rem) 1.25rem;
+      text-align: center;
+    }
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.55rem, 8vw, 5.7rem);
+      line-height: 1;
+      letter-spacing: -.065em;
+    }
+    .hero p { max-width: 37rem; margin: 1.25rem auto; color: #e5f0e9; }
+    .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.75rem;
+      padding: .6rem 1.05rem;
+      border: 1px solid var(--lime);
+      border-radius: .65rem;
+      background: var(--lime);
+      color: var(--forest);
+      font-weight: 750;
+      text-decoration: none;
+    }
+    .button.secondary { color: white; background: transparent; border-color: #a6bbaf; }
+    .button:hover { text-decoration: underline; }
+    .section { margin-block: clamp(2.5rem, 6vw, 4.5rem); scroll-margin-top: 1rem; }
+    h2 { margin: 0 0 .5rem; font-size: clamp(1.65rem, 4vw, 2.5rem); line-height: 1.15; }
+    h3 { margin: 0 0 .5rem; line-height: 1.25; }
+    .note, footer { color: var(--muted); }
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .8rem;
+      margin-top: 1.5rem;
+    }
+    label { display: block; font-weight: 650; }
+    input, select {
+      width: 100%;
+      min-height: 2.75rem;
+      margin-top: .25rem;
+      padding: .55rem .65rem;
+      border: 1px solid #8a9f91;
+      border-radius: .5rem;
+      background: white;
+      color: var(--ink);
+      font: inherit;
+    }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: .9rem; }
+    table { width: 100%; border-collapse: collapse; background: white; }
+    th, td { padding: .85rem; border-bottom: 1px solid var(--line); text-align: left; }
+    thead th { background: #e9f0e5; }
+    tbody tr:last-child > * { border-bottom: 0; }
+    tbody th { font-weight: 650; }
+    .price { white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .guide { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .85rem; margin-top: 1.25rem; }
+    .guide article { border: 1px solid var(--line); border-radius: .9rem; background: white; padding: 1.15rem; }
+    .guide p { margin: 0; }
+    details { padding: .9rem 0; border-bottom: 1px solid var(--line); }
+    summary { cursor: pointer; font-weight: 700; }
+    details p { margin-bottom: 0; }
+    footer { border-top: 1px solid var(--line); padding-block: 1.4rem; }
+    @media (max-width: 42rem) {
+      .controls, .guide { grid-template-columns: 1fr; }
+      th, td { padding: .65rem; }
+    }
+  </style>
+<link rel="canonical" href="https://kakobuyfinds.github.io/hsdtl/">
+</head>
+<body>
+  <!-- Search review: ChinaGrails emphasizes agent links and filters, pikobuybestsheet.com organizes discovery around categories and QC, and pikobuy.to indexes finds by category and brand. This page adds a sortable USD price column, direct CAFANS detail links, and practical checks for sizing and parcel costs. -->
+  <header class="shell topbar">
+    <a class="wordmark" href="https://cafans.com">CAFANS</a>
+    <nav aria-label="On this page">
+      <a href="#catalog">Product catalog</a>
+      <a href="#buying-checklist">Buying checklist</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="hero" aria-labelledby="page-title">
+      <h1 id="page-title">PikoBuy spreadsheet</h1>
+      <p>Compare shoes, streetwear and jackets from the CAFANS catalog. Check estimated USD prices, then open the product listing to review sizes, photos and buying options.</p>
+      <div class="actions">
+        <a class="button" href="https://cafans.com">PikoBuy spreadsheet</a>
+        <a class="button secondary" href="https://cafans.com">Buy it now</a>
+      </div>
+    </section>
+
+    <section class="section" id="catalog" aria-labelledby="catalog-title">
+      <h2 id="catalog-title">CAFANS product catalog</h2>
+      <p class="note" id="price-note">Estimated item prices in USD. Confirm current prices and availability on CAFANS, and budget separately for shipping and agent fees.</p>
+
+      <div class="controls" id="catalog-controls" hidden>
+        <label for="product-search">Search products
+          <input id="product-search" type="search" placeholder="e.g. slides">
+        </label>
+        <label for="product-category">Category
+          <select id="product-category">
+            <option value="">All categories</option>
+            <option value="Shoes">Shoes</option>
+            <option value="Hoodies &amp; sweaters">Hoodies &amp; sweaters</option>
+            <option value="T-shirts">T-shirts</option>
+            <option value="Jackets">Jackets</option>
+          </select>
+        </label>
+        <label for="product-sort">Sort by
+          <select id="product-sort">
+            <option value="featured">Featured order</option>
+            <option value="low">Price: low to high</option>
+            <option value="high">Price: high to low</option>
+          </select>
+        </label>
+      </div>
+
+      <p id="product-count" class="note" role="status" hidden></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="CAFANS product listings">
+        <table aria-label="Featured CAFANS products" aria-describedby="price-note">
+          <thead>
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Category</th>
+              <th scope="col">Est. USD</th>
+            </tr>
+          </thead>
+          <tbody id="product-list">
+            <tr data-category="Shoes" data-price="62.36">
+              <th scope="row"><a href="https://cafans.com/goods-158791.html">Leather Slides</a></th>
+              <td>Shoes</td><td class="price">$62.36</td>
+            </tr>
+            <tr data-category="Shoes" data-price="46.67">
+              <th scope="row"><a href="https://cafans.com/goods-158790.html">Platform Slides</a></th>
+              <td>Shoes</td><td class="price">$46.67</td>
+            </tr>
+            <tr data-category="Hoodies &amp; sweaters" data-price="27.50">
+              <th scope="row"><a href="https://cafans.com/goods-158792.html">Sweatshirt</a></th>
+              <td>Hoodies &amp; sweaters</td><td class="price">$27.50</td>
+            </tr>
+            <tr data-category="T-shirts" data-price="32.64">
+              <th scope="row"><a href="https://cafans.com/goods-158200.html">Unisex Embroidered Oversized T-Shirt</a></th>
+              <td>T-shirts</td><td class="price">$32.64</td>
+            </tr>
+            <tr data-category="T-shirts" data-price="29.72">
+              <th scope="row"><a href="https://cafans.com/goods-158110.html">Unisex T-Shirt</a></th>
+              <td>T-shirts</td><td class="price">$29.72</td>
+            </tr>
+            <tr data-category="Jackets" data-price="42.78">
+              <th scope="row"><a href="https://cafans.com/goods-158279.html">Corteiz Jacket</a></th>
+              <td>Jackets</td><td class="price">$42.78</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p><a href="https://cafans.com">Browse the full CAFANS catalog</a></p>
+    </section>
+
+    <section class="section" id="buying-checklist" aria-labelledby="checklist-title">
+      <h2 id="checklist-title">What to check before ordering</h2>
+      <div class="guide">
+        <article>
+          <h3>Match the size and color</h3>
+          <p>Save the exact variant and compare the seller’s measurements with a garment or pair you already own. For shoes, check whether the chart uses foot length or insole length.</p>
+        </article>
+        <article>
+          <h3>Review available QC photos</h3>
+          <p>If your agent offers warehouse QC photos, check the size label, color, stitching and any visible defects. Confirm the exchange window before approving shipment.</p>
+        </article>
+        <article>
+          <h3>Estimate the full cost</h3>
+          <p>Add the item price, domestic delivery, applicable agent fees and international shipping. Ask which shipping options use volumetric weight and check any applicable taxes or duties.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">PikoBuy spreadsheet FAQ</h2>
+      <details>
+        <summary>Where do the product links lead?</summary>
+        <p>Each product name opens its CAFANS detail page. Both main buttons open the CAFANS homepage.</p>
+      </details>
+      <details>
+        <summary>Can I order every listing through PikoBuy?</summary>
+        <p>Check the product’s available buying options on CAFANS. If you have the original seller URL, ask PikoBuy whether it accepts that listing and ships the item to your destination.</p>
+      </details>
+      <details>
+        <summary>Does the USD price include international shipping?</summary>
+        <p>The table shows estimated item prices. For a parcel quote, check the packed dimensions, weight and destination with your chosen agent.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <p>Independent shopping guide featuring public CAFANS listings. Product prices and availability may change.</p>
+  </footer>
+
+  <script>
+    const controls = document.getElementById('catalog-controls');
+    const search = document.getElementById('product-search');
+    const category = document.getElementById('product-category');
+    const sort = document.getElementById('product-sort');
+    const productList = document.getElementById('product-list');
+    const productCount = document.getElementById('product-count');
+
+    const products = Array.from(productList.rows, row => ({
+      row,
+      category: row.dataset.category,
+      price: Number(row.dataset.price),
+      text: row.textContent.toLowerCase().replace(/\s+/g, ' ')
+    }));
+
+    function updateCatalog() {
+      const query = search.value.trim().toLowerCase();
+      const orderedProducts = [...products];
+
+      if (sort.value === 'low') {
+        orderedProducts.sort((first, second) => first.price - second.price);
+      }
+      if (sort.value === 'high') {
+        orderedProducts.sort((first, second) => second.price - first.price);
+      }
+
+      let visibleCount = 0;
+      for (const product of orderedProducts) {
+        const matchesCategory = !category.value || product.category === category.value;
+        const visible = matchesCategory && product.text.includes(query);
+        product.row.hidden = !visible;
+        if (visible) visibleCount += 1;
+        productList.append(product.row);
+      }
+
+      productCount.textContent = visibleCount
+        ? `Showing ${visibleCount} of ${products.length} products.`
+        : 'No products match. Clear the search or choose another category.';
+    }
+
+    search.addEventListener('input', updateCatalog);
+    category.addEventListener('change', updateCatalog);
+    sort.addEventListener('change', updateCatalog);
+    updateCatalog();
+    controls.hidden = false;
+    productCount.hidden = false;
+  </script>
+</body>
+</html>
